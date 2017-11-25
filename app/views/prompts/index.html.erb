@@ -17,7 +17,7 @@
       <% @prompts.each do |prompt| %>
       <tr>
         <td><%= prompt.content %></td>
-        <td><%= prompt.instructor_id %></td>
+        <td><%= prompt.admin.created_at %></td>
         <td>
           <a href="/prompts/<%= prompt.id %>" class="btn btn-primary">Show</a>
           <a href="/prompts/<%= prompt.id %>/edit" class="btn btn-warning">Edit</a>
