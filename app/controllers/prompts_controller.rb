@@ -10,7 +10,7 @@ class PromptsController < ApplicationController
   end
 
   def index
-    @prompts = Prompt.all
+    @prompts = Prompt.page(params[:page]).per(10)
 
     render("prompts/index.html.erb")
   end

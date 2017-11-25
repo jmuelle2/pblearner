@@ -1,6 +1,6 @@
 class AssignedPromptsController < ApplicationController
   def index
-    @assigned_prompts = AssignedPrompt.all
+    @assigned_prompts = AssignedPrompt.page(params[:page]).per(10)
 
     render("assigned_prompts/index.html.erb")
   end
