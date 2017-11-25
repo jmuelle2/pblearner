@@ -26,3 +26,34 @@
     </div>
   </div>
 </div>
+
+<!-- A Prompt has many assigned_prompts -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Assigned Prompts
+      </li>
+
+      <% @prompt.assigned_prompts.each do |assigned_prompt| %>
+        <li class="list-group-item">
+          <a href="/assigned_prompts/<%= assigned_prompt.id %>">
+            <%= assigned_prompt.prompt_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/assigned_prompts/<%= assigned_prompt.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/assigned_prompts/<%= assigned_prompt.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_assigned_prompt/<%= assigned_prompt.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
