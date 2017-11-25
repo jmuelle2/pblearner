@@ -16,7 +16,7 @@
 
       <% @responses.each do |response| %>
       <tr>
-        <td><%= response.assigned_prompt_id %></td>
+        <td><%= response.assigned_prompt.prompt_id %></td>
         <td><%= response.content %></td>
         <td>
           <a href="/responses/<%= response.id %>" class="btn btn-primary">Show</a>
