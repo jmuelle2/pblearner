@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "prompts#index"
   devise_for :students
   # Routes for the Student resource:
   # READ
