@@ -1,6 +1,9 @@
 class Instructor < ApplicationRecord
   # Direct associations
 
+  has_many   :prompts,
+             :dependent => :nullify
+
   # Indirect associations
 
   # Validations
