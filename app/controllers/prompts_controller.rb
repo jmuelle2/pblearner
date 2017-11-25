@@ -1,4 +1,14 @@
 class PromptsController < ApplicationController
+  before_action :current_user_must_be_prompt_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_prompt_instructor
+    prompt = Prompt.find(params[:id])
+
+    unless current_user == prompt.admin
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @prompts = Prompt.all
 
