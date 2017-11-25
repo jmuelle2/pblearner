@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :instructors
+  # Routes for the Instructor resource:
+  # READ
+  get "/instructors", :controller => "instructors", :action => "index"
+  get "/instructors/:id", :controller => "instructors", :action => "show"
+
+
   # Routes for the Prompt resource:
   # CREATE
   get "/prompts/new", :controller => "prompts", :action => "new"
