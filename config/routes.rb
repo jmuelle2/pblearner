@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Assigned_prompt resource:
+  # CREATE
+  get "/assigned_prompts/new", :controller => "assigned_prompts", :action => "new"
+  post "/create_assigned_prompt", :controller => "assigned_prompts", :action => "create"
+
+  # READ
+  get "/assigned_prompts", :controller => "assigned_prompts", :action => "index"
+  get "/assigned_prompts/:id", :controller => "assigned_prompts", :action => "show"
+
+  # UPDATE
+  get "/assigned_prompts/:id/edit", :controller => "assigned_prompts", :action => "edit"
+  post "/update_assigned_prompt/:id", :controller => "assigned_prompts", :action => "update"
+
+  # DELETE
+  get "/delete_assigned_prompt/:id", :controller => "assigned_prompts", :action => "destroy"
+  #------------------------------
+
   devise_for :instructors
   # Routes for the Instructor resource:
   # READ
