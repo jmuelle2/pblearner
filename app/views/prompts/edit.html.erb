@@ -33,7 +33,7 @@
           Instructor
         </label>
 
-        <input type="text" id="instructor_id" name="instructor_id" placeholder="Instructor" class="form-control" value="<%= @prompt.instructor_id %>">
+        <%= select_tag(:instructor_id, options_from_collection_for_select(Instructor.all, :id, :created_at, @prompt.instructor_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
