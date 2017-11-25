@@ -24,7 +24,7 @@
           Response
         </label>
 
-        <input type="text" id="response_id" name="response_id" placeholder="Response" class="form-control" value="<%= @comment.response_id %>">
+        <%= select_tag(:response_id, options_from_collection_for_select(Response.all, :id, :assigned_prompt_id, @comment.response_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for content -->
