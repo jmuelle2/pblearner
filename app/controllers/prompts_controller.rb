@@ -10,7 +10,8 @@ class PromptsController < ApplicationController
   end
 
   def index
-    @prompts = Prompt.page(params[:page]).per(10)
+    @q = Prompt.ransack(params[:q])
+    @prompts = @q.result(:distinct => true).includes(:assigned_prompts, :admin).page(params[:page]).per(10)
 
     render("prompts/index.html.erb")
   end
