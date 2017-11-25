@@ -6,6 +6,7 @@ class AssignedPromptsController < ApplicationController
   end
 
   def show
+    @response = Response.new
     @assigned_prompt = AssignedPrompt.find(params[:id])
 
     render("assigned_prompts/show.html.erb")

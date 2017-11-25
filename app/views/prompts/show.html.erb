@@ -56,6 +56,29 @@
           </div>
         </li>
       <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_assigned_prompt" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for prompt_id -->
+      <input type="hidden" name="prompt_id" value="<%= @prompt.id %>">
+
+      <!-- Label and input for student_id -->
+      <div class="form-group">
+        <label for="student_id" class="control-label">
+          Student
+        </label>
+
+        <input type="text" id="student_id" name="student_id" placeholder="Student" class="form-control" value="">
+      </div>
+
+      <button class="btn btn-block btn-success">
+        Create Assigned Prompt
+      </button>
+    </form>
+      </li>
     </ul>
   </div>
 </div>

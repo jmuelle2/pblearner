@@ -6,6 +6,7 @@ class ResponsesController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
     @response = Response.find(params[:id])
 
     render("responses/show.html.erb")
