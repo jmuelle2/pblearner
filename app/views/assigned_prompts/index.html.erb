@@ -16,7 +16,7 @@
 
       <% @assigned_prompts.each do |assigned_prompt| %>
       <tr>
-        <td><%= assigned_prompt.prompt_id %></td>
+        <td><%= assigned_prompt.prompt.content %></td>
         <td><%= assigned_prompt.student_id %></td>
         <td>
           <a href="/assigned_prompts/<%= assigned_prompt.id %>" class="btn btn-primary">Show</a>
