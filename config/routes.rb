@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :students
+  # Routes for the Student resource:
+  # READ
+  get "/students", :controller => "students", :action => "index"
+  get "/students/:id", :controller => "students", :action => "show"
+
+
   # Routes for the Comment resource:
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
