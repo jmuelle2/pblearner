@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1>
+    Prompts
+    <a href="/prompts/new" class="btn btn-lg btn-success">New Prompt</a>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+        <th>Content</th>
+        <th>Instructor</th>
+        <th>Actions</th>
+      </tr>
+
+      <% @prompts.each do |prompt| %>
+      <tr>
+        <td><%= prompt.content %></td>
+        <td><%= prompt.instructor_id %></td>
+        <td>
+          <a href="/prompts/<%= prompt.id %>" class="btn btn-primary">Show</a>
+          <a href="/prompts/<%= prompt.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_prompt/<%= prompt.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
