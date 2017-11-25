@@ -24,7 +24,7 @@
           Assigned prompt
         </label>
 
-        <input type="text" id="assigned_prompt_id" name="assigned_prompt_id" placeholder="Assigned prompt" class="form-control" value="<%= @response.assigned_prompt_id %>">
+        <%= select_tag(:assigned_prompt_id, options_from_collection_for_select(AssignedPrompt.all, :id, :prompt_id, @response.assigned_prompt_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for content -->
