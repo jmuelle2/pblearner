@@ -18,7 +18,7 @@
 
       <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.response_id %></td>
+        <td><%= comment.response.assigned_prompt_id %></td>
         <td><%= comment.content %></td>
         <td><%= comment.student_id %></td>
         <td><%= comment.instructor_id %></td>
