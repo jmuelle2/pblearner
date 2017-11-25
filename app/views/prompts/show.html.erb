@@ -9,7 +9,13 @@
       <dd><%= @prompt.content %></dd>
 
       <dt>Instructor</dt>
-      <dd><%= @prompt.instructor_id %></dd>
+      <dd>
+        <% if @prompt.admin.present? %>
+          <a href="/instructors/<%= @prompt.instructor_id %>">
+            <%= @prompt.admin.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

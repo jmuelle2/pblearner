@@ -18,7 +18,13 @@
 
       <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.response.assigned_prompt_id %></td>
+        <td>
+          <% if comment.response.present? %>
+            <a href="/responses/<%= comment.response.id %>">
+              <%= comment.response.assigned_prompt_id %>
+            </a>
+          <% end %>
+        </td>
         <td><%= comment.content %></td>
         <td><%= comment.student_id %></td>
         <td><%= comment.instructor_id %></td>

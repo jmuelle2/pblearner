@@ -6,7 +6,13 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Prompt</dt>
-      <dd><%= @assigned_prompt.prompt_id %></dd>
+      <dd>
+        <% if @assigned_prompt.prompt.present? %>
+          <a href="/prompts/<%= @assigned_prompt.prompt_id %>">
+            <%= @assigned_prompt.prompt.content %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Student</dt>
       <dd><%= @assigned_prompt.student_id %></dd>
