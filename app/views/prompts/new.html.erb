@@ -28,13 +28,7 @@
       </div>
 
       <!-- Label and input for instructor_id -->
-      <div class="form-group">
-        <label for="instructor_id" class="control-label">
-          Instructor
-        </label>
-
-        <%= select_tag(:instructor_id, options_from_collection_for_select(Instructor.all, :id, :created_at, @prompt.instructor_id), :class => "form-control") %>
-      </div>
+      <input type="hidden" name="instructor_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Prompt
