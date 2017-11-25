@@ -24,7 +24,7 @@
           Prompt
         </label>
 
-        <input type="text" id="prompt_id" name="prompt_id" placeholder="Prompt" class="form-control" value="<%= @assigned_prompt.prompt_id %>">
+        <%= select_tag(:prompt_id, options_from_collection_for_select(Prompt.all, :id, :content, @assigned_prompt.prompt_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for student_id -->
