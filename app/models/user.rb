@@ -1,4 +1,4 @@
-class Instructor < ApplicationRecord
+class User < ApplicationRecord
   # Direct associations
 
   has_many   :prompts,

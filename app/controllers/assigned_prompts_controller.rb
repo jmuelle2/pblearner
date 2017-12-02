@@ -1,13 +1,12 @@
 class AssignedPromptsController < ApplicationController
   def index
     @q = AssignedPrompt.ransack(params[:q])
-    @assigned_prompts = @q.result(:distinct => true).includes(:prompt, :responses).page(params[:page]).per(10)
+    @assigned_prompts = @q.result(:distinct => true).includes(:prompt, :student).page(params[:page]).per(10)
 
     render("assigned_prompts/index.html.erb")
   end
 
   def show
-    @response = Response.new
     @assigned_prompt = AssignedPrompt.find(params[:id])
 
     render("assigned_prompts/show.html.erb")

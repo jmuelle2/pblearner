@@ -5,11 +5,11 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @student.name %></dd>
+
       <dt>Email</dt>
       <dd><%= @student.email %></dd>
-
-      <dt>Password</dt>
-      <dd><%= @student.password %></dd>
 
     </dl>
 
@@ -17,6 +17,66 @@
       <a href="/students" class="btn btn-primary">
         Back
       </a>
+      <a href="/students/<%= @student.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_student/<%= @student.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
     </div>
+  </div>
+</div>
+
+<!-- A Student has many assigned_prompts -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Assigned Prompts
+      </li>
+
+      <% @student.assigned_prompts.each do |assigned_prompt| %>
+        <li class="list-group-item">
+          <a href="/assigned_prompts/<%= assigned_prompt.id %>">
+            <%= assigned_prompt.prompt_id %>
+          </a>
+          <div class="btn-group btn-group-xs pull-right">
+            <a href="/assigned_prompts/<%= assigned_prompt.id %>" class="btn btn-primary">
+              <i class="fa fa-search-plus"></i>
+            </a>
+            <a href="/assigned_prompts/<%= assigned_prompt.id %>/edit" class="btn btn-warning">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a href="/delete_assigned_prompt/<%= assigned_prompt.id %>" class="btn btn-danger" rel="nofollow">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </div>
+        </li>
+      <% end %>
+
+      <li class="list-group-item">
+        <form action="/create_assigned_prompt" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for prompt_id -->
+      <div class="form-group">
+        <label for="prompt_id" class="control-label">
+          Prompt
+        </label>
+
+        <%= select_tag(:prompt_id, options_from_collection_for_select(Prompt.all, :id, :content), :class => "form-control") %>
+      </div>
+
+      <!-- Label and input for student_id -->
+      <input type="hidden" name="student_id" value="<%= @student.id %>">
+
+      <button class="btn btn-block btn-success">
+        Create Assigned Prompt
+      </button>
+    </form>
+      </li>
+    </ul>
   </div>
 </div>

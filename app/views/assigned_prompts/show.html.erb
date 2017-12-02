@@ -15,7 +15,13 @@
       </dd>
 
       <dt>Student</dt>
-      <dd><%= @assigned_prompt.student_id %></dd>
+      <dd>
+        <% if @assigned_prompt.student.present? %>
+          <a href="/students/<%= @assigned_prompt.student_id %>">
+            <%= @assigned_prompt.student.name %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 
@@ -30,65 +36,5 @@
         Delete
       </a>
     </div>
-  </div>
-</div>
-
-<!-- A Assigned prompt has many responses -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Responses
-      </li>
-
-      <% @assigned_prompt.responses.each do |response| %>
-        <li class="list-group-item">
-          <a href="/responses/<%= response.id %>">
-            <%= response.assigned_prompt_id %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/responses/<%= response.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/responses/<%= response.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_response/<%= response.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-
-      <li class="list-group-item">
-        <form action="/create_response" method="post">
-      <!-- Hidden input for authenticity token to protect from forgery -->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for assigned_prompt_id -->
-      <div class="form-group">
-        <label for="assigned_prompt_id" class="control-label">
-          Assigned prompt
-        </label>
-
-        <%= select_tag(:assigned_prompt_id, options_from_collection_for_select(AssignedPrompt.all, :id, :prompt_id), :class => "form-control") %>
-      </div>
-
-      <!-- Label and input for content -->
-      <div class="form-group">
-        <label for="content" class="control-label">
-          Content
-        </label>
-
-        <textarea id="content" name="content" placeholder="Content" class="form-control" rows="3"></textarea>
-      </div>
-
-      <button class="btn btn-block btn-success">
-        Create Response
-      </button>
-    </form>
-      </li>
-    </ul>
   </div>
 </div>

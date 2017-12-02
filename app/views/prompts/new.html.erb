@@ -27,8 +27,8 @@
         <textarea id="content" name="content" placeholder="Content" class="form-control" rows="3"><%= @prompt.content %></textarea>
       </div>
 
-      <!-- Label and input for instructor_id -->
-      <input type="hidden" name="instructor_id" value="<%= current_user.id %>">
+      <!-- Label and input for user_id -->
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Prompt

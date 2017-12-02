@@ -2,7 +2,7 @@ class CreatePrompts < ActiveRecord::Migration
   def change
     create_table :prompts do |t|
       t.text :content
-      t.integer :instructor_id
+      t.integer :user_id
 
       t.timestamps
 

@@ -1,27 +1,27 @@
 <div class="page-header">
-  <h3>Instructor #<%= @instructor.id %></h3>
+  <h3>User #<%= @user.id %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>Email</dt>
-      <dd><%= @instructor.email %></dd>
+      <dd><%= @user.email %></dd>
 
       <dt>Password</dt>
-      <dd><%= @instructor.password %></dd>
+      <dd><%= @user.password %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/instructors" class="btn btn-primary">
+      <a href="/users" class="btn btn-primary">
         Back
       </a>
     </div>
   </div>
 </div>
 
-<!-- A Instructor has many prompts -->
+<!-- A User has many prompts -->
 
 <div class="row">
   <div class="col-md-12">
@@ -30,7 +30,7 @@
         Prompts
       </li>
 
-      <% @instructor.prompts.each do |prompt| %>
+      <% @user.prompts.each do |prompt| %>
         <li class="list-group-item">
           <a href="/prompts/<%= prompt.id %>">
             <%= prompt.content %>

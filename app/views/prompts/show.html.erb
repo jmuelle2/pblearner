@@ -8,10 +8,10 @@
       <dt>Content</dt>
       <dd><%= @prompt.content %></dd>
 
-      <dt>Instructor</dt>
+      <dt>User</dt>
       <dd>
         <% if @prompt.admin.present? %>
-          <a href="/instructors/<%= @prompt.instructor_id %>">
+          <a href="/users/<%= @prompt.user_id %>">
             <%= @prompt.admin.created_at %>
           </a>
         <% end %>
@@ -77,7 +77,7 @@
           Student
         </label>
 
-        <input type="text" id="student_id" name="student_id" placeholder="Student" class="form-control" value="">
+        <%= select_tag(:student_id, options_from_collection_for_select(Student.all, :id, :name), :class => "form-control") %>
       </div>
 
       <button class="btn btn-block btn-success">

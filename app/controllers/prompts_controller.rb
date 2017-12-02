@@ -1,7 +1,7 @@
 class PromptsController < ApplicationController
   before_action :current_user_must_be_prompt_user, :only => [:edit, :update, :destroy]
 
-  def current_user_must_be_prompt_instructor
+  def current_user_must_be_prompt_user
     prompt = Prompt.find(params[:id])
 
     unless current_user == prompt.admin
@@ -33,7 +33,7 @@ class PromptsController < ApplicationController
     @prompt = Prompt.new
 
     @prompt.content = params[:content]
-    @prompt.instructor_id = params[:instructor_id]
+    @prompt.user_id = params[:user_id]
 
     save_status = @prompt.save
 
@@ -61,7 +61,7 @@ class PromptsController < ApplicationController
     @prompt = Prompt.find(params[:id])
 
     @prompt.content = params[:content]
-    @prompt.instructor_id = params[:instructor_id]
+    @prompt.user_id = params[:user_id]
 
     save_status = @prompt.save
 
